@@ -44,10 +44,10 @@ while len(answers) < 50:
         answers.append(answer_state)
 
 # Create a csv of states missed
-states_to_learn = []
-for state in df.state:
-    if state not in answers:
-        states_to_learn.append(state)
+states_to_learn = [state for state in df.state if state not in answers]
+# for state in df.state:
+#     if state not in answers:
+#         states_to_learn.append(state)
 states_df = pd.DataFrame(states_to_learn)
 
 states_df.to_csv("states_to_learn.csv")
